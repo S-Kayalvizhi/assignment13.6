@@ -1,0 +1,37 @@
+1. What kind of data Hbase can store.
+Answer:
+HBase is a column-oriented database that’s an open-source implementation of Google’s Big Table storage architecture. 
+It can manage structured and semi-structured data and has some built-in features such as scalability, versioning, compression and garbage collection. 
+
+2. Explain the important terms in hbase architecture.
+Answer:
+
+The important terms in hbase architecture:
+HMaster
+HRegionServer
+
+The HMaster in the HBase is responsible for
+Performing Administration
+Managing and Monitoring the Cluster
+Assigning Regions to the Region Servers
+Controlling the Load Balancing and Failover
+
+The HRegionServer perform the following work
+Hosting and managing Regions
+Splitting the Regions automatically
+Handling the read/write requests
+Communicating with the Clients directly
+
+3. What is zookeeper? What happens if the zookeeper service is stopped.
+Answer:
+ZooKeeper is a high-performance coordination service for distributed applications(like HBase). 
+It exposes common services like naming, configuration management, synchronization, and group services, in a simple interface so you don't have to write them from scratch.
+HBase relies completely on Zookeeper.
+If the zookeeper service is stopped, Hbase will not function properly
+
+4. Is it necessary that region server be located on all DataNodes?
+Answer:
+We don't have to because its relatively benign since HBase will have most data available on the local datanode
+
+5. How will you implement joins in Hbase?
+The two primary strategies are either denormalizing the data upon writing to HBase, or to have lookup tables and do the join between HBase tables in your application or MapReduce code (and as RDBMS' demonstrate, there are several strategies for this depending on the size of the tables.
